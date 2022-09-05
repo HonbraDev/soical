@@ -18,7 +18,7 @@ FROM gcr.io/distroless/base-debian10
 
 WORKDIR /
 
-COPY --from=build /bin/server /server
+COPY --from=build /app/bin/server /server
 
 EXPOSE 8080
 

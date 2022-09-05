@@ -18,9 +18,7 @@ First set up a Go environment
 
 ## Running
 
-```sh
-./bin/server.sh
-```
+Use `go run ./cmd/server` or the Docker container.
 
 ## Adding the calendar
 

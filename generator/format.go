@@ -1,5 +1,7 @@
 package generator
 
+import "time"
+
 // pain.
 func FormatMistnostiUdalosti(mistnostiUdalosti []struct {
 	MistnostID     string `json:"MISTNOST_ID"`
@@ -16,4 +18,8 @@ func FormatMistnostiUdalosti(mistnostiUdalosti []struct {
 		loc += m.Nazev
 	}
 	return loc
+}
+
+func FormatDateYMD(date time.Time) string {
+	return date.Format("2006-01-02")
 }

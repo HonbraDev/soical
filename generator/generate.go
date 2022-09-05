@@ -26,7 +26,10 @@ func GenerateCalendar(username, password string) (*ics.Calendar, error) {
 	}
 
 	// fetch events
-	events, err := client.GetRozvrhoveUdalostiRange("2022-09-01", "2022-09-30")
+	events, err := client.GetRozvrhoveUdalostiRange(
+		FormatDateYMD(time.Now().AddDate(0, 0, -7)),
+		FormatDateYMD(time.Now().AddDate(0, 1, 0)),
+	)
 	if err != nil {
 		return nil, err
 	}
@@ -36,7 +39,7 @@ func GenerateCalendar(username, password string) (*ics.Calendar, error) {
 	cal.SetName("Rozvrh - " + userinfo.Jmeno)
 	cal.SetTzid("Europe/Prague")
 	cal.SetMethod("PUBLISH")
-	cal.SetProductId("-//HonbraDev//soical//EN")
+	cal.SetProductId("-//HonbraDev//SOiCal//EN")
 	cal.SetCalscale("GREGORIAN")
 
 	// add events

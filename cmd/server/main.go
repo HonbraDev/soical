@@ -1,11 +1,10 @@
 package main
 
 import (
-	"log"
-
 	"github.com/HonbraDev/soical/server"
+	"github.com/HonbraDev/soical/shared"
 )
 
 func main() {
-	log.Fatal(server.NewServer(":3000").ListenAndServe())
+	shared.L.Fatal(server.NewServer(":3000").ListenAndServe())
 }

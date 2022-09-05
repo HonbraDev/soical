@@ -1,8 +1,9 @@
 package server
 
 import (
-	"log"
 	"net/http"
+
+	"github.com/HonbraDev/soical/shared"
 )
 
 func logRequestHandler(handler http.Handler) http.Handler {
@@ -14,5 +15,5 @@ func logRequestHandler(handler http.Handler) http.Handler {
 
 func logRequest(r *http.Request, args ...any) {
 	args = append([]any{r.RemoteAddr, r.Method, r.URL}, args...)
-	log.Println(args...)
+	shared.L.Println(args...)
 }

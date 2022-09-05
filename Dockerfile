@@ -10,9 +10,6 @@ COPY go.sum ./
 RUN go mod download
 
 COPY *.go ./
-COPY cmd ./cmd
-copy generator ./generator
-COPY server ./server
 
 RUN ./build.sh
 

@@ -44,12 +44,7 @@ func GenerateCalendar(username, password string) (*ics.Calendar, error) {
 
 	// add events
 	for _, e := range events {
-		ce := cal.AddEvent(e.UdalostID + "@" + e.CasOd + "@" + e.CasDo)
-		ce.SetDtStampTime(time.Now())
-		ce.SetSummary(e.Nazev)
-		ce.SetStartAt(ParseTime(e.CasOd))
-		ce.SetEndAt(ParseTime(e.CasDo))
-		ce.SetLocation(FormatMistnostiUdalosti(e.MistnostiUdalosti))
+		cal.AddVEvent(GenerateEvent(&e))
 	}
 
 	return cal, nil

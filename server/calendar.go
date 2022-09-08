@@ -17,9 +17,13 @@ func HandleCalRequest(w http.ResponseWriter, r *http.Request) {
 	// auth
 	username, password, ok := r.BasicAuth()
 	if username == "" || password == "" || !ok {
-		http.Error(w, "missing or improperly formatted credentials", http.StatusBadRequest)
-		logRequest(r, "missing or improperly formatted credentials")
-		return
+		username = r.URL.Query().Get("username")
+		password = r.URL.Query().Get("password")
+		if username == "" || password == "" {
+			http.Error(w, "missing or improperly formatted credentials", http.StatusBadRequest)
+			logRequest(r, "missing or improperly formatted credentials")
+			return
+		}
 	}
 
 	// name map

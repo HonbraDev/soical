@@ -23,7 +23,7 @@ func main() {
 	}
 
 	log.Println("Generating calendar")
-	cal, err := generator.GenerateCalendar(*username, *password)
+	cal, err := generator.MakeCalendarLazy(*username, *password)
 	if err != nil {
 		log.Fatal("Error: ", err)
 	}

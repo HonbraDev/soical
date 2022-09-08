@@ -2,16 +2,11 @@ package generator
 
 import (
 	"time"
+
+	"github.com/HonbraDev/sogo/models"
 )
 
-// pain.
-func FormatMistnostiUdalosti(mistnostiUdalosti []struct {
-	MistnostID     string `json:"MISTNOST_ID"`
-	Nazev          string `json:"NAZEV"`
-	Popis          string `json:"POPIS"`
-	PriznakAbsence bool   `json:"PRIZNAK_ABSENCE"`
-},
-) string {
+func FormatMistnostiUdalosti(mistnostiUdalosti []models.MistnostUdalosti) string {
 	loc := ""
 	for i, m := range mistnostiUdalosti {
 		if i > 0 {
@@ -22,26 +17,11 @@ func FormatMistnostiUdalosti(mistnostiUdalosti []struct {
 	return loc
 }
 
-func FormatUcitelUdalosti(u struct {
-	UcitelID       string `json:"UCITEL_ID"`
-	Prijmeni       string `json:"PRIJMENI"`
-	Jmeno          string `json:"JMENO"`
-	Zkratka        string `json:"ZKRATKA"`
-	PriznakAbsence bool   `json:"PRIZNAK_ABSENCE"`
-},
-) string {
+func FormatUcitelUdalosti(u *models.UcitelUdalosti) string {
 	return u.Jmeno + " " + u.Prijmeni
 }
 
-func FormatSkupinaUdalosti(s struct {
-	SkupinaID          string `json:"SKUPINA_ID"`
-	SkupinaNazev       string `json:"SKUPINA_NAZEV"`
-	PriznakDruhSkupiny string `json:"PRIZNAK_DRUH_SKUPINY"`
-	TridaID            string `json:"TRIDA_ID"`
-	TridaNazev         string `json:"TRIDA_NAZEV"`
-	PriznakAbsence     bool   `json:"PRIZNAK_ABSENCE"`
-},
-) string {
+func FormatSkupinaUdalosti(s *models.SkupinaUdalosti) string {
 	if s.SkupinaNazev != s.TridaNazev {
 		return s.SkupinaNazev + " (" + s.TridaNazev + ")"
 	} else {

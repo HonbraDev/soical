@@ -1,5 +1,7 @@
 github.com/HonbraDev/sogo v0.0.0-20220905092137-2e8c0141691c h1:WdvSpGHtX/YDdzTQdgFlfn3l/le1yCUYZvnB7W2mYZA=
 github.com/HonbraDev/sogo v0.0.0-20220905092137-2e8c0141691c/go.mod h1:koLWTYePHNBVQ3aJr96IB9NI4RDCDCEPz22cboSlCXY=
+github.com/HonbraDev/sogo v0.0.0-20220908182226-867e96bd0b99 h1:Adp9POn/01/ifaxQte//mhSDaTWywVaOVbZRBlobhtY=
+github.com/HonbraDev/sogo v0.0.0-20220908182226-867e96bd0b99/go.mod h1:koLWTYePHNBVQ3aJr96IB9NI4RDCDCEPz22cboSlCXY=
 github.com/arran4/golang-ical v0.0.0-20220517104411-fd89fefb0182 h1:mUsKridvWp4dgfkO/QWtgGwuLtZYpjKgsm15JRRik3o=
 github.com/arran4/golang-ical v0.0.0-20220517104411-fd89fefb0182/go.mod h1:BSTTrYHuM12oAL8jDdcmPdw02SBThKYWNFHQlvEG6b0=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=

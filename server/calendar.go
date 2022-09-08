@@ -1,15 +1,17 @@
 package server
 
 import (
+	"fmt"
 	"net/http"
 	"time"
 
+	sogo "github.com/HonbraDev/sogo/client"
 	"github.com/HonbraDev/soical/generator"
 
 	ics "github.com/arran4/golang-ical"
 )
 
-func handleCalRequest(w http.ResponseWriter, r *http.Request) {
+func HandleCalRequest(w http.ResponseWriter, r *http.Request) {
 	startTime := time.Now()
 
 	// auth
@@ -20,9 +22,36 @@ func handleCalRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// make
-	cal, err := generator.GenerateCalendar(username, password)
+	// name map
+	var nameMap map[string]string
+	if nameMapUrl := r.URL.Query().Get("nameMapUrl"); nameMapUrl != "" {
+		var err error
+		nameMap, err = generator.GetNameMap(nameMapUrl)
+		if err != nil {
+			err = fmt.Errorf("failed to get name map: %w", err)
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			logRequest(r, "Error:", err.Error())
+			return
+		}
+	}
+
+	// events
+	client := sogo.NewClient(username, password)
+	events, err := client.GetRozvrhoveUdalostiRange(
+		generator.FormatDateYMD(time.Now().AddDate(0, 0, -7)),
+		generator.FormatDateYMD(time.Now().AddDate(0, 1, 0)),
+	)
 	if err != nil {
+		err = fmt.Errorf("failed to get events: %w", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		logRequest(r, "Error:", err.Error())
+		return
+	}
+
+	// make
+	cal, err := generator.MakeCalendar(events, nameMap)
+	if err != nil {
+		err = fmt.Errorf("failed to make calendar: %w", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		logRequest(r, "Error:", err)
 		return

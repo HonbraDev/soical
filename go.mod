@@ -3,7 +3,7 @@ module github.com/HonbraDev/soical
 go 1.18
 
 require (
-	github.com/HonbraDev/sogo v0.0.0-20220905092137-2e8c0141691c
+	github.com/HonbraDev/sogo v0.0.0-20220908182226-867e96bd0b99
 	github.com/arran4/golang-ical v0.0.0-20220517104411-fd89fefb0182
 	github.com/gorilla/mux v1.8.0
 )

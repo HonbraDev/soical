@@ -8,7 +8,7 @@ import (
 
 func NewServer(addr string) *http.Server {
 	mux := mux.NewRouter().StrictSlash(true)
-	mux.NewRoute().HandlerFunc(handleCalRequest).Methods("GET")
+	mux.NewRoute().HandlerFunc(HandleCalRequest).Methods("GET")
 	mux.Use(logRequestHandler)
 	return &http.Server{
 		Addr:    addr,

@@ -1,3 +1,7 @@
+Note: I have been absorbed by the Rust cult and am currently rewriting the project in [Crab Lang](https://github.com/HonbraDev/skolaonline-rs).
+
+---
+
 # SOiCal
 
 An iCal bridge for the Czech edutech provider Škola OnLine
